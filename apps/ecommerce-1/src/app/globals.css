@@ -82,13 +82,19 @@
   }
 }
 
-html,
-body {
+html {
   max-width: 100vw;
   overflow-x: hidden;
+  /* reserve the scrollbar's width so Radix's Sheet scroll-lock doesn't shift layout when it opens */
+  scrollbar-gutter: stable;
 }
 
 body {
+  /* overflow-x must NOT be set here: giving body its own overflow value makes it compute
+     overflow-y as a scroll container too, which breaks position:sticky for children like
+     the storefront header and the Shop the Look image (they'd stick to body's box instead
+     of the viewport). html already clips horizontal overflow for the whole page. */
+  max-width: 100vw;
   background: #fff;
   color: var(--ink);
   font-family: var(--font-inter), sans-serif;
