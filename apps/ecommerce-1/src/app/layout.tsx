@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, Inter } from "next/font/google";
+import { CartDrawer, CartToast } from "@/features/cart";
+import { StorefrontHeader, StorefrontMobileMenu } from "@/features/storefront";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -25,7 +27,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${archivo.variable} ${inter.variable}`}>{children}</body>
+      <body className={`${archivo.variable} ${inter.variable} relative text-ink`}>
+        <CartToast />
+        <CartDrawer />
+        <StorefrontHeader />
+        <StorefrontMobileMenu />
+        {children}
+      </body>
     </html>
   );
 }
