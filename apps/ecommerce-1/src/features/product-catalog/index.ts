@@ -4,3 +4,4 @@ export { ProductCard } from "./components/product-card";
 export { ProductGrid } from "./components/product-grid";
 export { SectionHeading } from "./components/section-heading";
 export type { Product, ProductWithVariants, CategoryBannerData } from "./types/product-types";
+
