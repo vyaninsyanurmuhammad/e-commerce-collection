@@ -1,5 +1,6 @@
 // apps/ecommerce-1/src/features/checkout/components/checkout-form.tsx
 "use client";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,8 +17,14 @@ const groupLabel = "mb-3.5 font-archivo text-[13px] font-bold tracking-wide text
 export function CheckoutForm() {
   const router = useRouter();
   const { placeOrder } = useCheckout();
-  const { cartTotal } = useCart();
+  const { cart, cartTotal } = useCart();
   const form = useForm<CheckoutFormData>({ resolver: zodResolver(checkoutSchema), defaultValues: DEFAULTS });
+
+  // Guard against a direct/bookmarked visit to /checkout with an empty cart —
+  // the cart drawer's own Checkout button already blocks this, but this route is reachable directly.
+  useEffect(() => {
+    if (cart.length === 0) router.push("/");
+  }, [cart.length, router]);
 
   // The source prototype never reads these values on submit — validated for a real form
   // experience, but placeOrder() only needs the cart itself, matching that behavior.

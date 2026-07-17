@@ -65,7 +65,7 @@ No `api.ts`/`queries.ts`/`mutations.ts`/`query-keys.ts` in any feature — this 
 ### Rules
 
 - **Component filenames must be prefixed with the feature name.** `product-card.tsx`, `checkout-form.tsx` — never `card.tsx` or `form.tsx` alone.
-- **`index.ts` is the only import surface for a feature** — except a feature's `stores/*.ts` may import another feature's `stores/*.ts` directly (never its barrel) when one feature's client state genuinely depends on another's. Today the only such edge is `checkout/stores/checkout-store.ts` importing `cart/stores/cart-store.ts`'s `cartAtom`.
+- **`index.ts` is the primary cross-feature import surface for components and views** — constants, pure lib helpers, and types may be deep-imported directly when doing so avoids re-exporting pass-through data through a barrel that adds no value; today's examples: `checkout/stores` reads `cart/stores`'s `cartAtom` directly, `product-detail` reads `product-catalog`'s constants directly, `checkout` reads `cart`'s `lineTotal` directly.
 - **Thin pages, fat features.** Every file under `src/app/**/page.tsx` is orchestration only (import one view component from a feature barrel, render it — nothing else). All screen logic, state, and markup lives in `features/`.
 - **Routing, not state, is the router.** Screen transitions are `next/link` / `useRouter().push(...)`, never a hand-rolled `view` atom — a route always exists in the URL. `product-detail-view.tsx` receives its product `id` as a prop from the dynamic route segment, not from global state.
 - **Forms are React Hook Form + Zod, always.** Schema in `schemas/<feature>-schemas.ts`, component using shadcn's `Form`/`FormField`.
