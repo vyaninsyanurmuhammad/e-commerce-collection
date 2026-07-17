@@ -1,7 +1,7 @@
 // apps/ecommerce-2/src/app/(storefront)/layout.tsx
 "use client";
 import { usePathname } from "next/navigation";
-import { StorefrontAnnouncementBar, StorefrontFooter, StorefrontHeader } from "@/features/storefront";
+import { StorefrontAnnouncementBar, StorefrontHeader } from "@/features/storefront";
 
 export default function StorefrontLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
