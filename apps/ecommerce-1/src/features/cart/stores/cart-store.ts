@@ -34,7 +34,7 @@ export const toggleWishlistAtom = atom(null, (get, set, id: string) => {
   set(wishlistAtom, { ...w, [id]: !w[id] });
 });
 
-export const addToCartAtom: WritableAtom<null, [Product, string, number], unknown> = atom(null, (_get, set, product: Product, size: string = "M", qty: number = 1) => {
+export const addToCartAtom: WritableAtom<null, [Product, string?, number?], unknown> = atom(null, (_get, set, product: Product, size: string = "M", qty: number = 1) => {
   set(cartAtom, (c) => addItem(c, product, size, qty));
   set(cartOpenAtom, true);
   set(showToastAtom, `${product.name} added to bag`);
