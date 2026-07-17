@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@import "tw-animate-css"; /* shadcn's Sheet uses animate-in/fade-in-0/slide-in-from-* utilities from this package */
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-panel: var(--panel);
+  --color-image-bg: var(--image-bg);
+
+  --font-archivo: var(--font-archivo);
+  --font-inter: var(--font-inter);
+
+  --animate-marquee: marquee 16s linear infinite;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --ink: #0a0a0a;
+  --accent: #e10600;
+  --accent-hover: #a80400;
+  --panel: #f5f3f0;
+  --image-bg: #f2f0ec;
+
+  /* shadcn semantic tokens (neutral base, light mode only — this app has no dark mode) */
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #171717;
+  --primary-foreground: #fafafa;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  /* --accent itself intentionally reuses the brand red above; shadcn's ghost/outline hover states aren't used anywhere in this app, so there's no practical collision */
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #a3a3a3;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes heroIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  /* overflow-x must NOT be set here: giving body its own overflow value makes it compute
+     overflow-y as a scroll container too, which breaks position:sticky for children like
+     the storefront header and the Shop the Look image (they'd stick to body's box instead
+     of the viewport). html already clips horizontal overflow for the whole page. */
+  max-width: 100vw;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
