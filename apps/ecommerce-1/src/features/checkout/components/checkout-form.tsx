@@ -16,15 +16,16 @@ const groupLabel = "mb-3.5 font-archivo text-[13px] font-bold tracking-wide text
 
 export function CheckoutForm() {
   const router = useRouter();
-  const { placeOrder } = useCheckout();
+  const { placeOrder, orderNumber } = useCheckout();
   const { cart, cartTotal } = useCart();
   const form = useForm<CheckoutFormData>({ resolver: zodResolver(checkoutSchema), defaultValues: DEFAULTS });
 
   // Guard against a direct/bookmarked visit to /checkout with an empty cart —
   // the cart drawer's own Checkout button already blocks this, but this route is reachable directly.
+  // placeOrder() also empties the cart on success, so skip the redirect when an order was just placed.
   useEffect(() => {
-    if (cart.length === 0) router.push("/");
-  }, [cart.length, router]);
+    if (cart.length === 0 && !orderNumber) router.push("/");
+  }, [cart.length, orderNumber, router]);
 
   // The source prototype never reads these values on submit — validated for a real form
   // experience, but placeOrder() only needs the cart itself, matching that behavior.
