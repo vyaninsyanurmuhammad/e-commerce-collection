@@ -6,6 +6,8 @@ import { HomeTrendingSection } from "../components/home-trending-section";
 import { HomeFeaturedCollections } from "../components/home-featured-collections";
 import { HomePromoCountdown } from "../components/home-promo-countdown";
 import { HomeBestSellersSection } from "../components/home-best-sellers-section";
+import { HomeModernDetails } from "../components/home-modern-details";
+import { HomeEffortlessEveryday } from "../components/home-effortless-everyday";
 
 export function HomeView() {
   return (
@@ -16,6 +18,8 @@ export function HomeView() {
       <HomeFeaturedCollections />
       <HomePromoCountdown />
       <HomeBestSellersSection />
+      <HomeModernDetails />
+      <HomeEffortlessEveryday />
       <StorefrontFooter />
     </div>
   );
