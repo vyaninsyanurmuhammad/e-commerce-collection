@@ -6,7 +6,7 @@ import { useHeroCarousel } from "../hooks/use-hero-carousel";
 import { HERO_SLIDES } from "../constants/home-constants";
 
 export function HomeHeroCarousel() {
-  const { prev, next, diffFor } = useHeroCarousel(HERO_SLIDES.length);
+  const { prev, next, diffFor, isTransitioning } = useHeroCarousel(HERO_SLIDES.length);
 
   return (
     <section className="relative h-[92vh] min-h-155 overflow-hidden">
@@ -15,7 +15,9 @@ export function HomeHeroCarousel() {
         return (
           <div
             key={slide.title}
-            className="absolute inset-0 overflow-hidden bg-[oklch(0.5_0.025_95)] transition-transform duration-600 ease-[cubic-bezier(.65,0,.35,1)]"
+            className={`absolute inset-0 overflow-hidden bg-[oklch(0.5_0.025_95)] ${
+              isTransitioning(i) ? "transition-transform duration-600 ease-[cubic-bezier(.65,0,.35,1)]" : ""
+            }`}
             style={{ transform: `translateX(${diff * 100}%)`, pointerEvents: diff === 0 ? "auto" : "none" }}
           >
             <div className="pointer-events-none absolute top-1/2 left-[74%] size-160 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[oklch(0.62_0.02_95)] opacity-55" />
