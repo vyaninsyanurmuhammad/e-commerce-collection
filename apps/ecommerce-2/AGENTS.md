@@ -23,7 +23,7 @@ Next.js 16 App Router, React 19. A single-brand apparel storefront ("Amara") wit
 | `/checkout/payment` | `CheckoutPaymentView` | `(checkout)` |
 | `/order-confirmation` | `CheckoutConfirmationView` | `(checkout)` |
 
-**Two distinct chrome variants, not one global layout** — a deliberate difference from the sibling app `ecommerce-1`: `(storefront)/layout.tsx` renders the announcement bar + header nav (with a Collections dropdown and scroll-triggered solid background); `(checkout)/layout.tsx` renders a minimal logo + "Secure Checkout" + step progress bar instead. This matches the source design exactly — Checkout's nav is visibly different from Home/Shop's, not a simplified version of it. The footer is not global chrome — it's rendered by `HomeView` itself, not by `(storefront)/layout.tsx` and not by `CollectionView`, matching the source design (Shop has no footer).
+**Two distinct chrome variants, not one global layout** — a deliberate difference from the sibling app `ecommerce-1`: `(storefront)/layout.tsx` renders the announcement bar + header nav (with a Collections dropdown and scroll-triggered solid background); `(checkout)/layout.tsx` renders a minimal logo + "Secure Checkout" + step progress bar instead. This matches the source design exactly — Checkout's nav is visibly different from Home/Shop's, not a simplified version of it. The footer is not global chrome — `(storefront)/layout.tsx` itself renders neither: the rich 5-column footer renders via `HomeView` (Home only), and a separate minimal one-line copyright footer renders via `CollectionView` (Shop only) — the two pages don't share a footer component.
 
 **No cart drawer, no mobile menu, no toast** — the source design has none of these anywhere (confirmed across all 3 original page designs' nav markup). `Cart (n)` in the header is a plain link straight to `/checkout`. Do not add a `Sheet`-based drawer or mobile hamburger menu speculatively; the sibling app ecommerce-1 has both because its own source design called for them — this one didn't.
 
@@ -36,7 +36,7 @@ src/
 ├── app/
 │   ├── layout.tsx                       # Fonts (Outfit, DM Sans), metadata — NO chrome here
 │   ├── (storefront)/
-│   │   ├── layout.tsx                   # Announcement bar + header chrome (no footer — see Architecture)
+│   │   ├── layout.tsx                   # Announcement bar + header chrome (no footer here — see Architecture)
 │   │   ├── page.tsx                     # Home
 │   │   └── shop/page.tsx                # Collection — reads searchParams.cat server-side
 │   └── (checkout)/
@@ -51,7 +51,7 @@ src/
     ├── storefront/                      # nav/footer/newsletter chrome (storefront group only)
     ├── cart/                            # cart state (atomWithStorage) — zero feature deps
     ├── product-catalog/                 # product data, ProductCard, ProductGrid, reveal hook
-    ├── home/                            # 11 Home-page sections, most one-off (not shared with Shop)
+    ├── home/                            # 12 Home-page sections, most one-off (not shared with Shop)
     ├── collection/                      # Shop/listing page
     └── checkout/                        # 4-step wizard as 4 real routes; depends on cart's store only
 ```

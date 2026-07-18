@@ -1,15 +1,13 @@
 // apps/ecommerce-2/src/features/checkout/views/checkout-confirmation-view.tsx
 "use client";
 import Link from "next/link";
-import { useCart } from "@/features/cart";
 import { useCheckout } from "../hooks/use-checkout";
 import { shippingCost } from "../lib/checkout-math";
 
 export function CheckoutConfirmationView() {
-  const { cartSubtotal } = useCart();
-  const { orderNumber, shipping } = useCheckout();
-  const shipCost = shippingCost(cartSubtotal);
-  const total = cartSubtotal + shipCost;
+  const { orderNumber, orderSubtotal, shipping } = useCheckout();
+  const shipCost = shippingCost(orderSubtotal);
+  const total = orderSubtotal + shipCost;
 
   return (
     <div className="mx-auto max-w-130 px-6 pt-20 pb-30 text-center">
@@ -20,7 +18,7 @@ export function CheckoutConfirmationView() {
       <div className="mb-8 rounded-xl border border-neutral-100 bg-white p-6 text-left">
         <div className="mb-2.5 flex justify-between text-sm">
           <span>Items total</span>
-          <span>${cartSubtotal}</span>
+          <span>${orderSubtotal}</span>
         </div>
         <div className="mb-2.5 flex justify-between text-sm">
           <span>Shipping</span>

@@ -1,6 +1,6 @@
 "use client";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
-import { orderNumberAtom, paymentFormAtom, placeOrderAtom, shippingFormAtom } from "../stores/checkout-store";
+import { orderNumberAtom, orderSubtotalAtom, paymentFormAtom, placeOrderAtom, shippingFormAtom } from "../stores/checkout-store";
 
 export function useCheckout() {
   const [shipping, setShipping] = useAtom(shippingFormAtom);
@@ -11,6 +11,7 @@ export function useCheckout() {
     payment,
     setPayment,
     orderNumber: useAtomValue(orderNumberAtom),
+    orderSubtotal: useAtomValue(orderSubtotalAtom),
     placeOrder: useSetAtom(placeOrderAtom),
   };
 }

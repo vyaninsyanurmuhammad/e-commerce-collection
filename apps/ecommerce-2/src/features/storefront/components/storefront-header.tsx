@@ -16,7 +16,7 @@ export function StorefrontHeader({ hasHero = false }: { hasHero?: boolean }) {
       style={{ background: solid ? "var(--ink)" : "transparent" }}
     >
       <Link href="/" className="flex items-center gap-2">
-        <span className="size-3 rotate-45" style={{ background: "#fff" }} />
+        <span className="size-3 rotate-45 bg-white" />
         <span className="font-outfit text-xl font-bold tracking-wide text-white">AMARA</span>
       </Link>
       <ul className="flex list-none gap-9 text-[15px] text-white">

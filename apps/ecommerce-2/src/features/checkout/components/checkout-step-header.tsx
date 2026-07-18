@@ -39,12 +39,9 @@ export function CheckoutStepHeader() {
             return (
               <div key={s.num} className="flex flex-1 flex-col items-center gap-2.5">
                 <div
-                  className="flex size-8 items-center justify-center rounded-full text-[13px] font-semibold"
-                  style={{
-                    background: active || done ? "var(--ink)" : "#fff",
-                    color: active || done ? "#fff" : "oklch(0.5 0.005 75)",
-                    border: active || done ? "none" : "1px solid oklch(0.85 0.005 75)",
-                  }}
+                  className={`flex size-8 items-center justify-center rounded-full text-[13px] font-semibold ${
+                    active || done ? "bg-ink text-white" : "border border-input bg-white text-muted-foreground"
+                  }`}
                 >
                   {done ? "✓" : s.num}
                 </div>
