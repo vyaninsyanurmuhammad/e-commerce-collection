@@ -8,6 +8,10 @@ import { HomePromoCountdown } from "../components/home-promo-countdown";
 import { HomeBestSellersSection } from "../components/home-best-sellers-section";
 import { HomeModernDetails } from "../components/home-modern-details";
 import { HomeEffortlessEveryday } from "../components/home-effortless-everyday";
+import { HomeJournalSection } from "../components/home-journal-section";
+import { HomeSeasonBanner } from "../components/home-season-banner";
+import { HomeValueProps } from "../components/home-value-props";
+import { HomeShineMarquee } from "../components/home-shine-marquee";
 
 export function HomeView() {
   return (
@@ -20,6 +24,10 @@ export function HomeView() {
       <HomeBestSellersSection />
       <HomeModernDetails />
       <HomeEffortlessEveryday />
+      <HomeJournalSection />
+      <HomeSeasonBanner />
+      <HomeValueProps />
+      <HomeShineMarquee />
       <StorefrontFooter />
     </div>
   );
