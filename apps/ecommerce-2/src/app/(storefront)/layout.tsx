@@ -9,8 +9,13 @@ export default function StorefrontLayout({ children }: { children: React.ReactNo
 
   return (
     <div className="relative w-full text-ink">
-      <StorefrontAnnouncementBar />
-      <StorefrontHeader hasHero={hasHero} />
+      {/* On the hero page, chrome floats over the hero (fixed, out of flow) so the
+          transparent header shows the hero underneath instead of the page background.
+          Other pages keep normal flow so content isn't hidden under a fixed bar. */}
+      <div className={hasHero ? "fixed inset-x-0 top-0 z-50" : ""}>
+        <StorefrontAnnouncementBar />
+        <StorefrontHeader hasHero={hasHero} />
+      </div>
       {children}
     </div>
   );

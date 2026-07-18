@@ -63,6 +63,41 @@ export const FEATURED_COLLECTIONS: CollectionCard[] = [
     credit: "Photo by amin naderloei on Unsplash",
     creditHref: "https://unsplash.com/@aminnaderloei",
   },
+  {
+    title: "Outerwear",
+    tagline: "Layer up in structured coats",
+    src: "https://images.unsplash.com/photo-1590077889830-b8d2538d21d6?w=900&auto=format&fit=crop",
+    credit: "Photo by Michael Rivera on Unsplash",
+    creditHref: "https://unsplash.com/@monkeydmykie",
+  },
+  {
+    title: "Knitwear",
+    tagline: "Textured layers for cooler days",
+    src: "https://images.unsplash.com/photo-1611799298578-0ed239e049fe?w=900&auto=format&fit=crop",
+    credit: "Photo by Lerone Pieters on Unsplash",
+    creditHref: "https://unsplash.com/@leronep",
+  },
+  {
+    title: "Denim",
+    tagline: "Considered fits, built to last",
+    src: "https://images.unsplash.com/photo-1578979879663-4ba6a968a50a?w=900&auto=format&fit=crop",
+    credit: "Photo by Wesley Tingey on Unsplash",
+    creditHref: "https://unsplash.com/@wesleyphotography",
+  },
+  {
+    title: "Loungewear",
+    tagline: "Soft essentials for slow mornings",
+    src: "https://images.unsplash.com/photo-1574201635302-388dd92a4c3f?w=900&auto=format&fit=crop",
+    credit: "Photo by Valna Studio on Unsplash",
+    creditHref: "https://unsplash.com/@valnastudio",
+  },
+  {
+    title: "Accessories",
+    tagline: "Finishing details that matter",
+    src: "https://images.unsplash.com/photo-1709746460135-dd54962d4857?w=900&auto=format&fit=crop",
+    credit: "Photo by Blake Cheek on Unsplash",
+    creditHref: "https://unsplash.com/@blakecheekk",
+  },
 ];
 
 export type BlogPost = {

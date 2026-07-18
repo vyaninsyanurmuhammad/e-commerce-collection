@@ -1,6 +1,6 @@
 // apps/ecommerce-2/src/features/home/components/home-featured-collections.tsx
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useScrollProgress } from "../hooks/use-scroll-progress";
@@ -14,7 +14,12 @@ export function HomeFeaturedCollections() {
   const [viewportHeight, setViewportHeight] = useState(900);
   const progress = useScrollProgress(trackRef);
 
-  useEffect(() => {
+  // useLayoutEffect (not useEffect): commits the real trackHeight before first
+  // paint. useEffect runs after paint, so the pinned section would briefly render
+  // at the SSR fallback height (900px, ~= one viewport) with zero pin distance —
+  // on a fast connection a user can scroll straight through that window before
+  // the correct (much taller) height ever commits, making the pin feel absent.
+  useLayoutEffect(() => {
     const measure = () => {
       const rowWidth = rowRef.current?.scrollWidth ?? 0;
       const viewportWidth = viewportRef.current?.clientWidth ?? 0;
@@ -50,7 +55,7 @@ export function HomeFeaturedCollections() {
           </div>
         </div>
 
-        <div ref={viewportRef} className="absolute inset-0 z-10 overflow-hidden">
+        <div ref={viewportRef} className="pointer-events-none absolute inset-0 z-10 overflow-hidden">
           <div
             ref={rowRef}
             className="mt-[15vh] flex h-[70%] w-max items-center gap-6 pr-12 pl-115"
@@ -67,7 +72,7 @@ export function HomeFeaturedCollections() {
                     </div>
                   </div>
                   <h5 className="mb-3 font-outfit text-xl font-semibold">{col.title}</h5>
-                  <Link href="/shop" className="w-fit border-b border-ink pb-0.5 text-sm">
+                  <Link href="/shop" className="pointer-events-auto w-fit border-b border-ink pb-0.5 text-sm">
                     Shop Now
                   </Link>
                   <div className="mt-4 h-0.5 overflow-hidden rounded-full bg-ink/10">

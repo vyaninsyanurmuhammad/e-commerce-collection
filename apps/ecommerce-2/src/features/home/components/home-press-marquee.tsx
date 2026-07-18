@@ -2,7 +2,7 @@
 import { PRESS_LOGOS } from "../constants/home-constants";
 
 export function HomePressMarquee() {
-  const doubled = [...PRESS_LOGOS, ...PRESS_LOGOS];
+  const doubled = [...PRESS_LOGOS, ...PRESS_LOGOS, ...PRESS_LOGOS, ...PRESS_LOGOS];
 
   return (
     <section className="bg-[oklch(0.97_0.015_55)] py-14 text-center">
