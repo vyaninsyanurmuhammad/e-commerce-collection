@@ -32,3 +32,35 @@ export const HERO_SLIDES: HeroSlide[] = [
 ];
 
 export const PRESS_LOGOS = ["NORTHFIELD", "KINDRED CO", "ARCHWELL", "STUDIO EIGHT"];
+
+export type CollectionCard = {
+  title: string;
+  tagline: string;
+  src: string;
+  credit: string;
+  creditHref: string;
+};
+
+export const FEATURED_COLLECTIONS: CollectionCard[] = [
+  {
+    title: "Women's Edit",
+    tagline: "Soft textures, modern lines",
+    src: "https://images.unsplash.com/photo-1695996966975-9ed413650619?w=900&auto=format&fit=crop",
+    credit: "Photo by ANHELINA OSAULENKO on Unsplash",
+    creditHref: "https://unsplash.com/@linaos",
+  },
+  {
+    title: "Men's Edit",
+    tagline: "Clean, refined basics",
+    src: "https://images.unsplash.com/photo-1709746460135-dd54962d4857?w=900&auto=format&fit=crop",
+    credit: "Photo by Blake Cheek on Unsplash",
+    creditHref: "https://unsplash.com/@blakecheekk",
+  },
+  {
+    title: "New Arrivals",
+    tagline: "Fresh cuts, just landed",
+    src: "https://images.unsplash.com/photo-1753395298691-eb93244d76c1?w=900&auto=format&fit=crop",
+    credit: "Photo by amin naderloei on Unsplash",
+    creditHref: "https://unsplash.com/@aminnaderloei",
+  },
+];

@@ -3,6 +3,7 @@ import { StorefrontFooter } from "@/features/storefront";
 import { HomeHeroCarousel } from "../components/home-hero-carousel";
 import { HomePressMarquee } from "../components/home-press-marquee";
 import { HomeTrendingSection } from "../components/home-trending-section";
+import { HomeFeaturedCollections } from "../components/home-featured-collections";
 
 export function HomeView() {
   return (
@@ -10,6 +11,7 @@ export function HomeView() {
       <HomeHeroCarousel />
       <HomePressMarquee />
       <HomeTrendingSection />
+      <HomeFeaturedCollections />
       <StorefrontFooter />
     </div>
   );
